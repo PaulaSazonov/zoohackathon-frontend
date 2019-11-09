@@ -1,29 +1,62 @@
-import React, {Component } from 'react';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import React, { Component } from 'react';
+import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
 
 export default class SearchForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchUrl: '',
-            searchWord: '',
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchUrl: '',
+      searchWord: ''
+    };
+  }
 
-    componentDidMount() {
+  componentDidMount() {}
 
-    }
+  handleChange = e => {
+      const id = e.target.id
+      const value = e.target.value
 
-    render() {
-        return(
-            <Form>
-            <FormGroup>
-              <Label for="searchUrl">Anna Url josta haetaan</Label>
-              <Input type="text" name="searchUrl" id="searchUrl" placeholder="with a placeholder" />
-              <Label for="searchWord">Email</Label>
-              <Input type="text" name="searchWord" id="searchWord" placeholder="with a placeholder" />
+      if(id === "searchUrl"){
+        this.setState({searchUrl: value})
+      } else {
+        this.setState({searchWord: value})
+      }
+
+      console.log(this.state)
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log("state on submit: ", this.state)
+  }
+
+  render() {
+    return (
+      <Container>
+        <Form>
+          <FormGroup>
+            <Label for='searchUrl'>URL</Label>
+            <Input
+              type='text'
+              name='searchUrl'
+              id='searchUrl'
+              placeholder='Insert URL'
+              onChange={this.handleChange}
+            />
             </FormGroup>
-            </Form>
-        )
-    }
+            <FormGroup>
+            <Label for='searchWord'>Search Word</Label>
+            <Input
+              type='text'
+              name='searchWord'
+              id='searchWord'
+              placeholder='Insert search word'
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+        </Form>
+        <Button color='primary' onClick={this.handleSubmit}>GO!</Button>
+      </Container>
+    );
+  }
 }
