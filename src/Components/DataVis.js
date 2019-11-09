@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
 import { Card, CardText, CardBody } from 'reactstrap';
+import mockData from '../mockdata.json';
+import '../Stylesheets/DataVis.css';
+
 
 export default class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchHits: [
-                {
-                    searchHitContext: '',
-                    link: '',
-                }
-            ]
+            searchHits: props
         };
     }
 
     componentDidMount() {
 
+        console.log('Search hits:', this.state.searchHits)
     }
 
     render() {
         return(
             <div>
-                {this.state.searchHits.map(hit => (
-                <Card>
+                {this.state.searchHits.map((hit, index) => (
+                <Card key={index}>
                     <CardBody>
                         <CardText>
-                            <p>this is the context of the search hit. <em>Searchword</em> is mentioned in the following context.</p>
-                            <a href="#">Link to this hit</a>
+                            {hit.context}
+                        </CardText>
+                        <CardText>
+                            <a href="{hit.link}">{hit.link}</a>
                         </CardText>
                     </CardBody>
                 </Card>
