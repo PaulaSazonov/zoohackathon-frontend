@@ -5,15 +5,17 @@ import '../Stylesheets/header.css';
 class Header extends Component {
     render() {
         return (
-            <Container>
+            <Container className='header-container'>
                 <Row>
-                    <Col sm='6'>
+                    <Col xs='12' md='8'>
                     <div className='headline'>
                         TRAFFICnator
                     </div>
-                    You can use this application to search for keywords in spesific sites. This app was developed in Korkeasaari ZooHackathon.
+                    You can use this application to search for keywords in spesific sites. 
+                    This app was developed in Korkeasaari ZooHackathon.
+                    We have to come up with some text in here.
                     </Col>
-                    <Col sm='6' className='hero-image'>
+                    <Col xs='12' md='4' className='hero-image'>
                     This is going to be the hero image
                     </Col>
                 </Row>
