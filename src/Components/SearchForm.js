@@ -1,36 +1,56 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Container,
+  Spinner
+} from 'reactstrap';
+import { GetSearchResults } from '../ServiceClient';
+import DataVis from './DataVis';
 
 export default class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchUrl: '',
-      searchWord: ''
+      searchWord: '',
+      isProcessing: false,
+      searchResults: []
     };
   }
 
-  componentDidMount() {}
-
   handleChange = e => {
-      const id = e.target.id
-      const value = e.target.value
+    const id = e.target.id;
+    const value = e.target.value;
 
-      if(id === "searchUrl"){
-        this.setState({searchUrl: value})
-      } else {
-        this.setState({searchWord: value})
-      }
+    if (id === 'searchUrl') {
+      this.setState({ searchUrl: value });
+    } else {
+      this.setState({ searchWord: value });
+    }
 
-      console.log(this.state)
-  }
+    console.log(this.state);
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
-    console.log("state on submit: ", this.state)
-  }
+  handleClick = async () => {
+    this.setState({ isProcessing: true });
+    let searchParameters = this.state;
+    console.log('search params: ', searchParameters);
+
+    const results = await GetSearchResults(searchParameters);
+    this.setState({ searchResults: results, isProcessing: false });
+  };
 
   render() {
+    let searchResults = {};
+    if (this.state.isProcessing) {
+      return <Spinner color='primary' />;
+    } else {
+      searchResults = this.state.searchResults;
+    }
     return (
       <Container>
         <Form>
@@ -43,8 +63,8 @@ export default class SearchForm extends Component {
               placeholder='Insert URL'
               onChange={this.handleChange}
             />
-            </FormGroup>
-            <FormGroup>
+          </FormGroup>
+          <FormGroup>
             <Label for='searchWord'>Search Word</Label>
             <Input
               type='text'
@@ -55,7 +75,10 @@ export default class SearchForm extends Component {
             />
           </FormGroup>
         </Form>
-        <Button color='primary' onClick={this.handleSubmit}>GO!</Button>
+        <Button color='primary' onClick={this.handleClick}>
+          GO!
+        </Button>
+        <DataVis searchResults={searchResults} />
       </Container>
     );
   }

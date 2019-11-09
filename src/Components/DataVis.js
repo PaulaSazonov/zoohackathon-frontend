@@ -4,23 +4,14 @@ import mockData from '../mockdata.json';
 import '../Stylesheets/DataVis.css';
 
 
-export default class SearchForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchHits: props
-        };
-    }
+const DataVis = props => {
 
-    componentDidMount() {
+//  let data = props 
+let data = mockData
 
-        console.log('Search hits:', this.state.searchHits)
-    }
-
-    render() {
         return(
             <div>
-                {this.state.searchHits.map((hit, index) => (
+                {data.map((hit, index) => (
                 <Card key={index}>
                     <CardBody>
                         <CardText>
@@ -34,5 +25,7 @@ export default class SearchForm extends Component {
                 ))}
             </div>
         )
-    }
+    
 }
+
+export default DataVis;
