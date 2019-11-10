@@ -46,7 +46,7 @@ export default class SearchForm extends Component {
   render() {
     let searchResults = '';
     if (this.state.isProcessing) {
-      return <Spinner color='primary' />;
+      return <Spinner color='success' />;
     } else {
       searchResults = this.state.searchResults;
     }
@@ -77,7 +77,7 @@ export default class SearchForm extends Component {
         <Button color='primary' onClick={this.handleClick}>
           GO!
         </Button>
-        <DataVis searchResults={searchResults} />
+        <DataVis searchResults={searchResults} searchWord={this.state.searchWord}/>
       </Container>
     );
   }
