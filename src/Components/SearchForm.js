@@ -51,10 +51,17 @@ export default class SearchForm extends Component {
   render() {
     let searchResults = '';
     if (this.state.isProcessing) {
-      return <Spinner color='success' />;
+      return (
+        <div className='col text-center'>
+          <Spinner
+            style={{ width: '3rem', height: '3rem', color: '#01991D' }}
+          />
+        </div>
+      );
     } else {
       searchResults = this.state.searchResults;
     }
+
     return (
       <Container>
         <Form>
@@ -79,12 +86,14 @@ export default class SearchForm extends Component {
             />
           </FormGroup>
         </Form>
-        <Button color='success' size='lg' onClick={this.handleClick}>
-          Search
-        </Button>
+        <div className='col text-center'>
+          <Button id='searchBtn' size='lg' onClick={this.handleClick}>
+            Search
+          </Button>
+        </div>
         {this.state.searchResults === 'error' ? (
-          <Alert color='success' style={{marginTop: '20px'}}>
-            Sorry, we couldn't find any results! 
+          <Alert color='success' style={{ marginTop: '20px' }}>
+            Sorry, we couldn't find any results!
           </Alert>
         ) : (
           <DataVis

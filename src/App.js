@@ -8,7 +8,7 @@ import Footer from './Components/Footer'
 
 function App() {
     return (
-        <div>
+        <div className="app-container">
             <Header />
             <div className="content">
                 <SearchForm />
