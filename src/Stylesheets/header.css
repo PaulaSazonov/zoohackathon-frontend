@@ -1,5 +1,4 @@
 .header-container {
-    /* background-color: #009a17; */
     background-image:
     linear-gradient(
       to bottom right, 
@@ -10,10 +9,10 @@
     padding: 2em;
     align-items: center;
     justify-content: center;
-    background-image: url('../Images/bamboothree.svg');
+    /* background-image: url('../Images/bamboothree.svg');
     background-repeat: no-repeat;
     background-position-x: right;
-    background-size: 30%;
+    background-size: 30%; */
 }
 .headline {
     font-family: 'Kanit', sans-serif;
