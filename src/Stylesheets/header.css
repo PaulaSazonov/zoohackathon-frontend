@@ -4,6 +4,10 @@
     padding: 2em;
     align-items: center;
     justify-content: center;
+    background-image: url('../Images/bamboothree.svg');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: 30%;
 }
 .headline {
     font-family: 'Kanit', sans-serif;
@@ -12,5 +16,5 @@
 }
 
 .hero-image {
-    max-width: 100%;
+    max-width: 100%;    
 }
