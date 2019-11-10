@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import { GetSearchResults } from '../ServiceClient';
 import DataVis from './DataVis';
+import '../Stylesheets/SearchForm.css';
 
 export default class SearchForm extends Component {
   constructor(props) {
@@ -75,8 +76,8 @@ export default class SearchForm extends Component {
             />
           </FormGroup>
         </Form>
-        <Button color='primary' onClick={this.handleClick}>
-          GO!
+        <Button color="success" size="lg" onClick={this.handleClick}>
+          Search
         </Button>
         <DataVis searchResults={searchResults} />
       </Container>

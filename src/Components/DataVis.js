@@ -1,31 +1,43 @@
-import React, { Component } from 'react';
-import { Card, CardText, CardBody } from 'reactstrap';
-import mockData from '../mockdata.json';
-import '../Stylesheets/DataVis.css';
-
+import React from 'react'
+import { Card, CardText, CardBody } from 'reactstrap'
+import mockData from '../mockdata.json'
+import '../Stylesheets/DataVis.css'
 
 const DataVis = props => {
+    const boldenSearchWord = (context, searchWord) => {
 
-//  let data = props 
-let data = mockData
+        const reg = new RegExp(searchWord, 'gi');
+        const boldSearchWord = context.match(reg);
+        const [before, after] = context.split(reg)
 
-        return(
-            <div>
-                {data.map((hit, index) => (
+        return (
+        <span>
+            {before}
+            {boldSearchWord && boldSearchWord[0] && 
+            <b>{boldSearchWord[0]}</b>
+            }
+            {after}
+        </span>
+        );
+    };
+
+    //  let data = props
+    let data = mockData
+
+    return (
+        <div>
+            {data.searchResults.map((hit, index) => (
                 <Card key={index}>
                     <CardBody>
-                        <CardText>
-                            {hit.context}
-                        </CardText>
+                        <CardText>{boldenSearchWord(hit.context, data.searchWord)}</CardText>
                         <CardText>
                             <a href="{hit.link}">{hit.link}</a>
                         </CardText>
                     </CardBody>
                 </Card>
-                ))}
-            </div>
-        )
-    
+            ))}
+        </div>
+    )
 }
 
-export default DataVis;
+export default DataVis
