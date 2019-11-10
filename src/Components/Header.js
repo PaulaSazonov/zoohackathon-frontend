@@ -12,9 +12,9 @@ class Header extends Component {
                     <div className='headline'>
                         TRAFFICnator
                     </div>
-                    You can use this application to search for keywords in spesific sites. 
-                    This app was developed in Korkeasaari ZooHackathon.
-                    We have to come up with some text in here.
+                    This app was developed in Korkeasaari ZooHackathon for conservationists as a 
+                    starting point for a tool that allows the user to enter search criteria for 
+                    spesific sites. It gives the user a summary of the data received.
                     </Col>
                     <Col xs='12' md='4' >
                     <img src={pang} alt='Trafficnator logo' className='hero-image'/>

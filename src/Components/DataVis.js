@@ -31,7 +31,10 @@ let data = props.searchResults.data
                             {boldenSearchWord(hit.textContext, props.searchWord)}
                         </CardText>
                         <CardText>
-                            <a href="{hit.link}">{hit.url}</a>
+                            <a href={hit.url}>{hit.url}</a>
+                        </CardText>
+                        <CardText>
+                            Price: {hit.prize === null? "No price info available" : hit.prize + ' ' + hit.currency}
                         </CardText>
                     </CardBody>
                 </Card>
