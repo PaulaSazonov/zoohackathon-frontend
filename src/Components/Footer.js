@@ -4,7 +4,7 @@ import '../Stylesheets/footer.css';
 function Footer() {
   return (
     <div className='footer-cont'>
-     This is our Footer
+     Created at Korkeasaari Zoo Hackathon. Team: High Island hopes.
     </div>
   );
 }
