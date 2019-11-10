@@ -1,7 +1,6 @@
 import React from 'react'
 import './Stylesheets/App.css'
 import SearchForm from './Components/SearchForm'
-import DataVis from './Components/DataVis'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import Header from './Components/Header'

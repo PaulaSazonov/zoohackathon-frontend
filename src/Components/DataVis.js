@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardText, CardBody } from 'reactstrap';
 import mockData from '../mockdata.json';
 import '../Stylesheets/DataVis.css';
@@ -18,7 +18,10 @@ let data = props.searchResults.data
                             {hit.textContext}
                         </CardText>
                         <CardText>
-                            <a href="{hit.link}">{hit.url}</a>
+                            <a href={hit.url}>{hit.url}</a>
+                        </CardText>
+                        <CardText>
+                            Price: {hit.prize === null? "No price info available" : hit.prize + ' ' + hit.currency}
                         </CardText>
                     </CardBody>
                 </Card>
