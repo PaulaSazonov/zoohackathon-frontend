@@ -1,11 +1,9 @@
 import Axios from 'axios';
 
-const API = 'http://localhost:5000/api';
+const API = 'https://localhost:44373/api/Search';
 
-export async function GetSearchResults(searchParameters, callback) {
-  Axios.get(API + searchParameters).then(response => {
-    callback(response);
-  });
+export async function GetSearchResults(searchParameters) {
+  return Axios.get(API + "?sourceUrl=" + searchParameters.searchUrl + '&searchWord=' + searchParameters.searchWord)
 }
 
 export default function() {}
