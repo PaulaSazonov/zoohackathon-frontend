@@ -34,7 +34,7 @@ let data = props.searchResults.data
                             <a href={hit.url}>{hit.url}</a>
                         </CardText>
                         <CardText>
-                            Price: {hit.prize === null? "No price info available" : hit.prize + ' ' + hit.currency}
+                            {hit.prize === null? '' : 'Price: ' + hit.prize + ' ' + hit.currency}
                         </CardText>
                     </CardBody>
                 </Card>
