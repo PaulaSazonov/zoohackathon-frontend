@@ -71,7 +71,7 @@ export default class SearchForm extends Component {
               type='text'
               name='searchUrl'
               id='searchUrl'
-              placeholder='e.g. https://www.terraristik.com/'
+              placeholder='e.g. https://www.terraristik.com/tb/list_classifieds.php'
               onChange={this.handleChange}
             />
           </FormGroup>
