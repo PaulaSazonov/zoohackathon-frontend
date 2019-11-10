@@ -37,10 +37,8 @@ export default class SearchForm extends Component {
   handleClick = async () => {
     this.setState({ isProcessing: true });
     let searchParameters = this.state;
-    console.log('search params: ', searchParameters);
 
     const results = await GetSearchResults(searchParameters);
-    console.log('results', results);
     this.setState({ searchResults: results, isProcessing: false });
   };
 
