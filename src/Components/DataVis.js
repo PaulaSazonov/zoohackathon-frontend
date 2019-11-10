@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, CardText, CardBody } from 'reactstrap'
-import mockData from '../mockdata.json'
 import '../Stylesheets/DataVis.css'
 
 const DataVis = props => {
@@ -21,23 +20,25 @@ const DataVis = props => {
         );
     };
 
-    //  let data = props
-    let data = mockData
+let data = props.searchResults.data
 
-    return (
-        <div>
-            {data.searchResults.map((hit, index) => (
+        return(
+            <div>
+                {data !== undefined? data.map((hit, index) => (
                 <Card key={index}>
                     <CardBody>
-                        <CardText>{boldenSearchWord(hit.context, data.searchWord)}</CardText>
                         <CardText>
-                            <a href="{hit.link}">{hit.link}</a>
+                            {boldenSearchWord(hit.textContext, props.searchWord)}
+                        </CardText>
+                        <CardText>
+                            <a href="{hit.link}">{hit.url}</a>
                         </CardText>
                     </CardBody>
                 </Card>
-            ))}
-        </div>
-    )
+                )): ''}
+            </div>
+        )
+    
 }
 
 export default DataVis

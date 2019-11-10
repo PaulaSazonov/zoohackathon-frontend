@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Col, Row } from 'reactstrap';
+import pang from '../Images/pang.svg';
 import '../Stylesheets/header.css';
 
 class Header extends Component {
@@ -15,8 +16,8 @@ class Header extends Component {
                     This app was developed in Korkeasaari ZooHackathon.
                     We have to come up with some text in here.
                     </Col>
-                    <Col xs='12' md='4' className='hero-image'>
-                    This is going to be the hero image
+                    <Col xs='12' md='4' >
+                    <img src={pang} alt='Trafficnator logo' className='hero-image'/>
                     </Col>
                 </Row>
             </Container>
