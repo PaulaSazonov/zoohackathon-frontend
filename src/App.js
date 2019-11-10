@@ -14,7 +14,6 @@ function App() {
             This is our app wrapper
             <div className="content">
                 <SearchForm />
-                <DataVis />
             </div>
             <Footer />
         </div>

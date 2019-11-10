@@ -31,8 +31,6 @@ export default class SearchForm extends Component {
     } else {
       this.setState({ searchWord: value });
     }
-
-    console.log(this.state);
   };
 
   handleClick = async () => {
@@ -41,11 +39,12 @@ export default class SearchForm extends Component {
     console.log('search params: ', searchParameters);
 
     const results = await GetSearchResults(searchParameters);
+    console.log('results', results);
     this.setState({ searchResults: results, isProcessing: false });
   };
 
   render() {
-    let searchResults = {};
+    let searchResults = '';
     if (this.state.isProcessing) {
       return <Spinner color='primary' />;
     } else {

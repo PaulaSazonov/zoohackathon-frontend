@@ -6,23 +6,23 @@ import '../Stylesheets/DataVis.css';
 
 const DataVis = props => {
 
-//  let data = props 
-let data = mockData
+let data = props.searchResults.data
+// let data = mockData
 
         return(
             <div>
-                {data.map((hit, index) => (
+                {data !== undefined? data.map((hit, index) => (
                 <Card key={index}>
                     <CardBody>
                         <CardText>
-                            {hit.context}
+                            {hit.textContext}
                         </CardText>
                         <CardText>
-                            <a href="{hit.link}">{hit.link}</a>
+                            <a href="{hit.link}">{hit.url}</a>
                         </CardText>
                     </CardBody>
                 </Card>
-                ))}
+                )): ''}
             </div>
         )
     
