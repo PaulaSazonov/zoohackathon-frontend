@@ -6,7 +6,8 @@ import {
   Input,
   Button,
   Container,
-  Spinner
+  Spinner,
+  Alert
 } from 'reactstrap';
 import { GetSearchResults } from '../ServiceClient';
 import DataVis from './DataVis';
@@ -38,8 +39,13 @@ export default class SearchForm extends Component {
     this.setState({ isProcessing: true });
     let searchParameters = this.state;
 
-    const results = await GetSearchResults(searchParameters);
-    this.setState({ searchResults: results, isProcessing: false });
+    try {
+      const results = await GetSearchResults(searchParameters);
+      this.setState({ searchResults: results, isProcessing: false });
+    } catch (err) {
+      console.log(err);
+      this.setState({ searchResults: 'error', isProcessing: false });
+    }
   };
 
   render() {
@@ -58,7 +64,7 @@ export default class SearchForm extends Component {
               type='text'
               name='searchUrl'
               id='searchUrl'
-              placeholder='Insert URL'
+              placeholder='e.g. https://www.terraristik.com/'
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -68,15 +74,24 @@ export default class SearchForm extends Component {
               type='text'
               name='searchWord'
               id='searchWord'
-              placeholder='Insert search word'
+              placeholder='e.g. alligator'
               onChange={this.handleChange}
             />
           </FormGroup>
         </Form>
-        <Button color="success" size="lg" onClick={this.handleClick}>
+        <Button color='success' size='lg' onClick={this.handleClick}>
           Search
         </Button>
-        <DataVis searchResults={searchResults} searchWord={this.state.searchWord}/>
+        {this.state.searchResults === 'error' ? (
+          <Alert color='success' style={{marginTop: '20px'}}>
+            Sorry, we couldn't find any results! 
+          </Alert>
+        ) : (
+          <DataVis
+            searchResults={searchResults}
+            searchWord={this.state.searchWord}
+          />
+        )}
       </Container>
     );
   }
