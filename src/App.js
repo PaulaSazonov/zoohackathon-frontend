@@ -8,9 +8,8 @@ import Footer from './Components/Footer'
 
 function App() {
     return (
-        <div>
+        <div className="app-container">
             <Header />
-            This is our app wrapper
             <div className="content">
                 <SearchForm />
             </div>
